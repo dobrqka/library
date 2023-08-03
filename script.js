@@ -32,11 +32,14 @@ const displayButton = document.querySelector("#display-button");
 const cardArea = document.querySelector("#card-area");
 
 displayButton.addEventListener("click", () => {
+  while (cardArea.firstChild) {
+    cardArea.removeChild(cardArea.firstChild);
+  }
   for (i = 0; i < myLibrary.length; i++) {
     const bookCard = document.createElement("div");
     bookCard.textContent = myLibrary[i].name;
-    // bookCard.textContent = "Test";
-    document.body.appendChild(bookCard);
+    // bookCard.classList.add("card");
+    cardArea.appendChild(bookCard);
   }
   console.log("display button clicked");
 });
