@@ -43,3 +43,6 @@ displayButton.addEventListener("click", () => {
   }
   console.log("display button clicked");
 });
+
+const addButton = document.querySelector("#new-book");
+// makes input form appear so you can add a new book
