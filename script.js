@@ -1,12 +1,13 @@
 let myLibrary = [];
 // array with all the book objects
 
-function Book(name, author, year, pages) {
+function Book(name, author, year, pages, read) {
   // book constructor
   this.name = name;
   this.author = author;
   this.year = year;
   this.pages = pages;
+  this.read = read;
   // read: () => {
   // const readToggle = document.querySelector('div>input[type="checkbox"]')
   // if (readToggle.hasAttribute(checked)) {
@@ -16,10 +17,10 @@ function Book(name, author, year, pages) {
   //  }
 }
 
-function addBookToLibrary(name, author, year, pages) {
+function addBookToLibrary(name, author, year, pages, read) {
   // submit button will use this function to create a new  object with the given input
   // and add it to the array
-  let newBook = new Book(name, author, year, pages);
+  let newBook = new Book(name, author, year, pages, read);
   myLibrary.push(newBook);
 }
 
@@ -49,7 +50,27 @@ const displayBooks = () => {
       "Read: ";
     const readButton = document.createElement("input");
     readButton.setAttribute("type", "checkbox");
+    readButton.dataset.index = i;
     bookCard.appendChild(readButton);
+    if (myLibrary[i].read === true) {
+      readButton.checked = true;
+    } else if (myLibrary[i].read === false) {
+      readButton.checked = false;
+    }
+
+    // const readButtons = document.querySelectorAll("div>input[type=checkbox]");
+    // readButtons.forEach((button) =>
+    //   button.addEventListener("change", (e) => {
+    //     if (myLibrary[e.target.dataset.index].read === false) {
+    //       myLibrary[e.target.dataset.index].read = true;
+    //     } else if (myLibrary[e.target.dataset.index] === true) {
+    //       myLibrary[e.target.dataset.index] = false;
+    //     }
+    //     displayBooks();
+    //     console.log(myLibrary[e.target.dataset.index].read);
+    //   })
+    // );
+
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.dataset.index = i;
@@ -74,7 +95,9 @@ submitButton.addEventListener("click", (e) => {
   let author = document.querySelector("#author").value;
   let year = document.querySelector("#year").value;
   let pages = document.querySelector("#pages").value;
-  addBookToLibrary(name, author, year, pages);
+  let read = document.querySelector("#read").checked;
+  console.log(read);
+  addBookToLibrary(name, author, year, pages, read);
   document.querySelector("form").reset();
   document.querySelector("form").style.display = "none";
   displayBooks();
@@ -90,4 +113,11 @@ addButton.addEventListener("click", () => {
   } else {
     theForm.style.display = "none";
   }
+});
+
+const testButton = document.createElement("button");
+testButton.textContent = "Test";
+document.body.appendChild(testButton);
+testButton.addEventListener("click", () => {
+  console.log(myLibrary);
 });
