@@ -24,9 +24,19 @@ const displayBooks = () => {
   for (i = 0; i < myLibrary.length; i++) {
     const bookCard = document.createElement("div");
     bookCard.textContent = myLibrary[i].name;
-    // bookCard.classList.add("card");
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    deleteButton.dataset.index = i;
+    bookCard.appendChild(deleteButton);
     cardArea.appendChild(bookCard);
   }
+  const xButtons = document.querySelectorAll("div>button");
+  xButtons.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      myLibrary.splice(e.target.dataset.index, 1);
+      displayBooks();
+    })
+  );
 };
 
 // submit button calls addBookToLibrary and passes arguments to addBookToLibrary
@@ -41,23 +51,6 @@ submitButton.addEventListener("click", (e) => {
   displayBooks();
   console.log(myLibrary);
 });
-
-// button that displays all the books in the library as cards
-
-// const displayButton = document.querySelector("#display-button");
-
-// displayButton.addEventListener("click", () => {
-//   while (cardArea.firstChild) {
-//     cardArea.removeChild(cardArea.firstChild);
-//   }
-//   for (i = 0; i < myLibrary.length; i++) {
-//     const bookCard = document.createElement("div");
-//     bookCard.textContent = myLibrary[i].name;
-//     // bookCard.classList.add("card");
-//     cardArea.appendChild(bookCard);
-//   }
-//   console.log("display button clicked");
-// });
 
 const addButton = document.querySelector("#new-book");
 // makes input form appear so you can add a new book
