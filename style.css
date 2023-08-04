@@ -20,5 +20,6 @@ form {
 
 div > div {
   flex: 1;
+  white-space: pre;
   border: 1px solid black;
 }

@@ -1,9 +1,12 @@
 let myLibrary = [];
 // array with all the book objects
 
-function Book(name) {
+function Book(name, author, year, pages) {
   // book constructor
   this.name = name;
+  this.author = author;
+  this.year = year;
+  this.pages = pages;
   // read: () => {
   // const readToggle = document.querySelector('div>input[type="checkbox"]')
   // if (readToggle.hasAttribute(checked)) {
@@ -13,10 +16,10 @@ function Book(name) {
   //  }
 }
 
-function addBookToLibrary(name) {
+function addBookToLibrary(name, author, year, pages) {
   // submit button will use this function to create a new  object with the given input
   // and add it to the array
-  let newBook = new Book(name);
+  let newBook = new Book(name, author, year, pages);
   myLibrary.push(newBook);
 }
 
@@ -30,14 +33,27 @@ const displayBooks = () => {
   }
   for (i = 0; i < myLibrary.length; i++) {
     const bookCard = document.createElement("div");
-    bookCard.textContent = myLibrary[i].name;
+    bookCard.textContent =
+      "Title: " +
+      myLibrary[i].name +
+      "\n" +
+      "Author: " +
+      myLibrary[i].author +
+      "\n" +
+      "Year: " +
+      myLibrary[i].year +
+      "\n" +
+      "Pages: " +
+      myLibrary[i].pages +
+      "\n" +
+      "Read: ";
+    const readButton = document.createElement("input");
+    readButton.setAttribute("type", "checkbox");
+    bookCard.appendChild(readButton);
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.dataset.index = i;
     bookCard.appendChild(deleteButton);
-    const readButton = document.createElement("input");
-    readButton.setAttribute("type", "checkbox");
-    bookCard.appendChild(readButton);
     cardArea.appendChild(bookCard);
   }
   const xButtons = document.querySelectorAll("div>button");
@@ -54,8 +70,11 @@ const displayBooks = () => {
 
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
-  let text = document.querySelector("#book-name").value;
-  addBookToLibrary(text);
+  let name = document.querySelector("#book-name").value;
+  let author = document.querySelector("#author").value;
+  let year = document.querySelector("#year").value;
+  let pages = document.querySelector("#pages").value;
+  addBookToLibrary(name, author, year, pages);
   document.querySelector("form").reset();
   document.querySelector("form").style.display = "none";
   displayBooks();
