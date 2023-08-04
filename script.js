@@ -4,6 +4,13 @@ let myLibrary = [];
 function Book(name) {
   // book constructor
   this.name = name;
+  // read: () => {
+  // const readToggle = document.querySelector('div>input[type="checkbox"]')
+  // if (readToggle.hasAttribute(checked)) {
+  // read = true;
+  //}
+  // else {read = false;}
+  //  }
 }
 
 function addBookToLibrary(name) {
@@ -28,6 +35,9 @@ const displayBooks = () => {
     deleteButton.textContent = "X";
     deleteButton.dataset.index = i;
     bookCard.appendChild(deleteButton);
+    const readButton = document.createElement("input");
+    readButton.setAttribute("type", "checkbox");
+    bookCard.appendChild(readButton);
     cardArea.appendChild(bookCard);
   }
   const xButtons = document.querySelectorAll("div>button");
