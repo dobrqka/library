@@ -9,3 +9,16 @@ div {
   height: 100px;
   background-color: red;
 } */
+
+form {
+  display: none;
+}
+
+#card-area {
+  display: flex;
+}
+
+div > div {
+  flex: 1;
+  border: 1px solid black;
+}

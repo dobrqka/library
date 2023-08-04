@@ -23,6 +23,7 @@ submitButton.addEventListener("click", (e) => {
   let text = document.querySelector("#book-name").value;
   addBookToLibrary(text);
   document.querySelector("form").reset();
+  document.querySelector("form").style.display = "none";
   console.log(myLibrary);
 });
 
@@ -46,3 +47,11 @@ displayButton.addEventListener("click", () => {
 
 const addButton = document.querySelector("#new-book");
 // makes input form appear so you can add a new book
+addButton.addEventListener("click", () => {
+  const theForm = document.querySelector("form");
+  if (theForm.style.display === "none") {
+    theForm.style.display = "block";
+  } else {
+    theForm.style.display = "none";
+  }
+});
