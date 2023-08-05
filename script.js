@@ -8,13 +8,6 @@ function Book(name, author, year, pages, read) {
   this.year = year;
   this.pages = pages;
   this.read = read;
-  // read: () => {
-  // const readToggle = document.querySelector('div>input[type="checkbox"]')
-  // if (readToggle.hasAttribute(checked)) {
-  // read = true;
-  //}
-  // else {read = false;}
-  //  }
 }
 
 function addBookToLibrary(name, author, year, pages, read) {
@@ -58,19 +51,6 @@ const displayBooks = () => {
       readButton.checked = false;
     }
 
-    // const readButtons = document.querySelectorAll("div>input[type=checkbox]");
-    // readButtons.forEach((button) =>
-    //   button.addEventListener("change", (e) => {
-    //     if (myLibrary[e.target.dataset.index].read === false) {
-    //       myLibrary[e.target.dataset.index].read = true;
-    //     } else if (myLibrary[e.target.dataset.index] === true) {
-    //       myLibrary[e.target.dataset.index] = false;
-    //     }
-    //     displayBooks();
-    //     console.log(myLibrary[e.target.dataset.index].read);
-    //   })
-    // );
-
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "X";
     deleteButton.dataset.index = i;
@@ -84,6 +64,17 @@ const displayBooks = () => {
       displayBooks();
     })
   );
+
+  const readButtons = document.querySelectorAll("div>input[type=checkbox]");
+  readButtons.forEach((button) =>
+    button.addEventListener("change", (e) => {
+      if (e.target.checked === false) {
+        myLibrary[e.target.dataset.index].read = false;
+      } else if (e.target.checked === true) {
+        myLibrary[e.target.dataset.index].read = true;
+      }
+    })
+  );
 };
 
 // submit button calls addBookToLibrary and passes arguments to addBookToLibrary
@@ -92,16 +83,23 @@ const displayBooks = () => {
 submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   let name = document.querySelector("#book-name").value;
+  // checks if book with the same title already exists in library
+  for (i = 0; i < myLibrary.length; i++) {
+    if (document.querySelector("#book-name").value == myLibrary[i].name) {
+      alert("This book is already in your library. Please add another title.");
+      return;
+    } else {
+      name = document.querySelector("#book-name").value;
+    }
+  }
   let author = document.querySelector("#author").value;
   let year = document.querySelector("#year").value;
   let pages = document.querySelector("#pages").value;
   let read = document.querySelector("#read").checked;
-  console.log(read);
   addBookToLibrary(name, author, year, pages, read);
   document.querySelector("form").reset();
   document.querySelector("form").style.display = "none";
   displayBooks();
-  console.log(myLibrary);
 });
 
 const addButton = document.querySelector("#new-book");
@@ -113,11 +111,4 @@ addButton.addEventListener("click", () => {
   } else {
     theForm.style.display = "none";
   }
-});
-
-const testButton = document.createElement("button");
-testButton.textContent = "Test";
-document.body.appendChild(testButton);
-testButton.addEventListener("click", () => {
-  console.log(myLibrary);
 });
