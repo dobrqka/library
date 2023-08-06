@@ -13,19 +13,33 @@
       <form>
         <p>
           <label for="book-name">Title: </label>
-          <input type="text" id="book-name" name="book-name" />
+          <input type="text" id="book-name" name="book-name" required />
         </p>
         <p>
           <label for="author">Author: </label>
-          <input type="text" id="author" name="author" />
+          <input type="text" id="author" name="author" required />
         </p>
         <p>
           <label for="year">Year: </label>
-          <input type="number" id="year" name="year" min="0" max="2023" />
+          <input
+            type="number"
+            id="year"
+            name="year"
+            min="0"
+            max="2023"
+            required
+          />
         </p>
         <p>
           <label for="pages">Number of pages: </label>
-          <input type="number" id="pages" name="pages" min="1" max="21450" />
+          <input
+            type="number"
+            id="pages"
+            name="pages"
+            min="1"
+            max="21450"
+            required
+          />
         </p>
         <p>
           <label for="read">Read: </label>

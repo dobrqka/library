@@ -27,6 +27,7 @@ const displayBooks = () => {
   }
   for (i = 0; i < myLibrary.length; i++) {
     const bookCard = document.createElement("div");
+    bookCard.classList.add("book-card");
     bookCard.textContent =
       "Title: " +
       myLibrary[i].name +
