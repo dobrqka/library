@@ -20,51 +20,6 @@ function addBookToLibrary(name, author, year, pages, read) {
 const submitButton = document.querySelector("#submit-button");
 
 const cardArea = document.querySelector("#card-area");
-// function that displays books once they are added
-// const displayBooks = () => {
-//   while (cardArea.firstChild) {
-//     cardArea.removeChild(cardArea.firstChild);
-//   }
-//   for (i = 0; i < myLibrary.length; i++) {
-//     const bookCard = document.createElement("div");
-//     bookCard.classList.add("book-card");
-//     bookCard.textContent =
-//       "Title: " +
-//       myLibrary[i].name +
-//       "\n" +
-//       "Author: " +
-//       myLibrary[i].author +
-//       "\n" +
-//       "Year: " +
-//       myLibrary[i].year +
-//       "\n" +
-//       "Pages: " +
-//       myLibrary[i].pages +
-//       "\n" +
-//       "Read: ";
-//     const readButton = document.createElement("input");
-//     readButton.setAttribute("type", "checkbox");
-//     readButton.dataset.index = i;
-//     bookCard.appendChild(readButton);
-//     if (myLibrary[i].read === true) {
-//       readButton.checked = true;
-//     } else if (myLibrary[i].read === false) {
-//       readButton.checked = false;
-//     }
-
-//     const deleteButton = document.createElement("button");
-//     deleteButton.textContent = "X";
-//     deleteButton.dataset.index = i;
-//     bookCard.appendChild(deleteButton);
-//     cardArea.appendChild(bookCard);
-//   }
-//   const xButtons = document.querySelectorAll("div>button");
-//   xButtons.forEach((button) =>
-//     button.addEventListener("click", (e) => {
-//       myLibrary.splice(e.target.dataset.index, 1);
-//       displayBooks();
-//     })
-//   );
 
 function addDiv(text, parent) {
   const newDiv = document.createElement("div");

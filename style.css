@@ -6,10 +6,24 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.header {
+  background-color: rgb(183, 183, 253);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 h1 {
   padding: 3vw;
-  background-color: rgb(183, 183, 253);
   color: white;
+}
+
+a {
+  justify-self: end;
+  align-self: center;
+}
+
+a > img {
+  height: 10vh;
 }
 
 .main {
@@ -34,6 +48,7 @@ form {
   background-color: rgb(226, 226, 250);
   padding: 20px;
   display: grid;
+  z-index: 1;
   /* gap: 0.5rem; */
 }
 
@@ -180,36 +195,33 @@ div > button:active {
   cursor: pointer;
 }
 
-.book-card > input[type="checkbox"]:after {
+.book-card > input[type="checkbox"]:before {
   content: "";
   width: 60px;
   height: 28px;
   display: inline-block;
-  background: rgb(159, 159, 252);
+  background: rgb(243, 243, 243);
   border-radius: 18px;
   clear: both;
 }
 
-/* Contents before checkbox to create toggle handle */
-.book-card > input[type="checkbox"]:before {
+.book-card > input[type="checkbox"]:after {
   content: "";
   width: 32px;
   height: 32px;
   display: block;
   position: absolute;
-  left: 0;
+  left: 32px;
   top: -3px;
   border-radius: 50%;
   background: rgb(255, 255, 255);
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Shift the handle to left on check event */
-.book-card > input[type="checkbox"]:checked:before {
-  left: 32px;
+.book-card > input[type="checkbox"]:checked:after {
+  left: 0;
   box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.6);
 }
-/* Background color when toggle button will be active */
-.book-card > input[type="checkbox"]:checked:after {
-  background: rgb(221, 221, 221);
+.book-card > input[type="checkbox"]:checked:before {
+  background: rgb(159, 159, 252);
 }
