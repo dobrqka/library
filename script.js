@@ -108,7 +108,7 @@ const addButton = document.querySelector("#new-book");
 addButton.addEventListener("click", () => {
   const theForm = document.querySelector("form");
   if (theForm.style.display === "none") {
-    theForm.style.display = "block";
+    theForm.style.display = "grid";
   } else {
     theForm.style.display = "none";
   }
